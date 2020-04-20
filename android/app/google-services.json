@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "740316038368",
+    "firebase_url": "https://codethecurve-1109e.firebaseio.com",
+    "project_id": "codethecurve-1109e",
+    "storage_bucket": "codethecurve-1109e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740316038368:android:b2d1ad989bf42cf47abc85",
+        "android_client_info": {
+          "package_name": "com.example.fama"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "740316038368-om35u3cvteovjf8n3jrka3893h93jhuf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyvRAUku7yEz-Et6GjHyMfeBypLqWVUqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "740316038368-om35u3cvteovjf8n3jrka3893h93jhuf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
