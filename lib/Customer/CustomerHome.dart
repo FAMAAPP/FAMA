@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../auth.dart';
+import '../Customer/AddPlace.dart';
+import '../Customer/TimeSlot.dart';
 
 class CustomerHomePage extends StatelessWidget {
   CustomerHomePage({this.auth, this.onSignOut});
@@ -40,7 +42,14 @@ class CustomerHomePage extends StatelessWidget {
                 child: new RaisedButton(
                   textColor: Colors.white,
                   color: Colors.blue,
-                  onPressed: () {},
+                  onPressed:  () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => new AddPlaceButton(),
+                      ),
+                    );
+                  },
                   child: new Text("Add Place"),
                   shape: new RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
@@ -54,7 +63,17 @@ class CustomerHomePage extends StatelessWidget {
                 child: new RaisedButton(
                   textColor: Colors.white,
                   color: Colors.blue,
-                  onPressed: () {},
+                  onPressed:  () {
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => new TimeSlot(),
+                      ),
+                    );
+
+
+                  },
                   child: new Text("View Schedule"),
                   shape: new RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(

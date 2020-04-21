@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../primary_button.dart';
-import '../auth.dart';
+import 'primary_button.dart';
+import 'auth.dart';
 
-class ProviderLoginPage extends StatefulWidget {
-  ProviderLoginPage({Key key, this.title, this.auth, this.onSignIn}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  LoginPage({Key key, this.title, this.auth, this.onSignIn}) : super(key: key);
 
   final String title;
   final BaseAuth auth;
@@ -18,7 +18,7 @@ enum FormType {
   register
 }
 
-class _LoginPageState extends State<ProviderLoginPage> {
+class _LoginPageState extends State<LoginPage> {
   var formKey = new GlobalKey<FormState>();
 
   String _email;
