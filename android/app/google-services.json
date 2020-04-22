@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "740316038368",
-    "firebase_url": "https://codethecurve-1109e.firebaseio.com",
-    "project_id": "codethecurve-1109e",
-    "storage_bucket": "codethecurve-1109e.appspot.com"
+    "project_number": "438513624562",
+    "firebase_url": "https://fama-509ea.firebaseio.com",
+    "project_id": "fama-509ea",
+    "storage_bucket": "fama-509ea.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:740316038368:android:b2d1ad989bf42cf47abc85",
+        "mobilesdk_app_id": "1:438513624562:android:4cac423809db6f47ba776b",
         "android_client_info": {
-          "package_name": "com.example.fama"
+          "package_name": "com.fama.famaapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "740316038368-om35u3cvteovjf8n3jrka3893h93jhuf.apps.googleusercontent.com",
+          "client_id": "438513624562-pcc23giidil7cf0h7f62ret8h8s5dqp5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDyvRAUku7yEz-Et6GjHyMfeBypLqWVUqM"
+          "current_key": "AIzaSyBWpX9WH9jUfIRxLHN-K1-KoUKkNr1S92M"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "740316038368-om35u3cvteovjf8n3jrka3893h93jhuf.apps.googleusercontent.com",
+              "client_id": "438513624562-pcc23giidil7cf0h7f62ret8h8s5dqp5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
