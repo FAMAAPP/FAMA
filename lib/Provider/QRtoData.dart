@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:qrscan/qrscan.dart';
+
 class QRtoData with ChangeNotifier {
   String QRScanResult;
 
