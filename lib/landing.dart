@@ -9,6 +9,7 @@ class Landing extends StatelessWidget {
       appBar: new AppBar(
         title: Text("Login as"),
         actions: <Widget>[],
+        backgroundColor: Color(0xFF506A32),
       ),
       body: new Center(
         child: Column(
@@ -18,7 +19,7 @@ class Landing extends StatelessWidget {
               width: 200,
               child: new RaisedButton(
                 textColor: Colors.white,
-                color: Colors.blue,
+                color: Color(0xFF506A32),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -39,7 +40,7 @@ class Landing extends StatelessWidget {
               width: 200,
               child: new RaisedButton(
                 textColor: Colors.white,
-                color: Colors.blue,
+                color: Color(0xFF506A32),
                 onPressed: () {
                   Navigator.push(
                     context,

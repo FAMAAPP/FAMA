@@ -13,7 +13,7 @@ class _timeslotState extends State<TimeSlot>{
   var green = Color(0xFF506A32);
   var white = Colors.white;
   var black = Colors.black;
-  int currentDay = 1;
+  int currentDay = 0;
 
   dayPressed(int n){
     setState(() {
@@ -116,7 +116,7 @@ class _timeslotState extends State<TimeSlot>{
                             ),
                             SizedBox(height: 8),
                             Text(
-                              "9",
+                              "09",
                               style:
                               TextStyle(fontSize: 17, color: currentDay == 1? white : black),
                             ),
@@ -154,26 +154,26 @@ class _timeslotState extends State<TimeSlot>{
                       width: 18,
                     ),
                     InkWell(
-                        child: Container(
-                          padding: EdgeInsets.all(2),
-                          color: currentDay == 3? green : white,
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                "Tues",
-                                style:
-                                TextStyle(fontSize: 17, color: currentDay == 3? white : black),
-                              ),
-                              SizedBox(height: 8),
-                              Text(
-                                "11",
-                                style:
-                                TextStyle(fontSize: 17, color: currentDay == 3? white : black),
-                              ),
-                            ],
-                          ),
+                      child: Container(
+                        padding: EdgeInsets.all(2),
+                        color: currentDay == 3? green : white,
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              "Tues",
+                              style:
+                              TextStyle(fontSize: 17, color: currentDay == 3? white : black),
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              "11",
+                              style:
+                              TextStyle(fontSize: 17, color: currentDay == 3? white : black),
+                            ),
+                          ],
                         ),
-                        onTap: (){dayPressed(3);}
+                      ),
+                      onTap: (){dayPressed(3);}
                     ),
                     SizedBox(
                       width: 18,
@@ -284,9 +284,8 @@ class _timeslotState extends State<TimeSlot>{
                 padding: EdgeInsets.all(10.0),
                 child: Column(
                   children: <Widget>[
-                    if (currentDay == 1)
-                      for(var i=1; i<=2; i++)
-                        Container(
+                    for(var i=1; i<=10; i++)
+                      Container(
                       //margin: const EdgeInsets.all(5.0),
                       padding: const EdgeInsets.all(5.0),
                       decoration:
@@ -300,6 +299,8 @@ class _timeslotState extends State<TimeSlot>{
                           ),
                           Spacer(),
                           Container(
+                            /*      color: Color(0xFFC13519),
+  */
                             height: 30,
                             width: 80,
                             margin: const EdgeInsets.all(3.0),
@@ -315,69 +316,6 @@ class _timeslotState extends State<TimeSlot>{
                               ),
                             ),
                           )
-                        ],
-                      ),
-                    )
-                    else if (currentDay == 2)
-                      for(var i=1; i<=2; i++)
-                        Container(
-                      /*margin: const EdgeInsets.all(5.0),*/
-                      padding: const EdgeInsets.all(5.0),
-                      decoration: BoxDecoration(
-                          border: Border(
-                            left: BorderSide(width: 1, color: Colors.grey),
-                            right: BorderSide(width: 1, color: Colors.grey),
-                          )),
-                      //       <--- BoxDecoration here
-                      child: Row(
-                        children: <Widget>[
-                          Text(
-                            "01.00 PM - 05.00 PM",
-                            style: TextStyle(fontSize: 13.0),
-                          ),
-                          Spacer(),
-                          Container(
-                            /*      color: Color(0xFFC13519),
-  */
-                            height: 30,
-                            width: 80,
-                            margin: const EdgeInsets.all(3.0),
-                            padding: const EdgeInsets.all(3.0),
-                            decoration: BoxDecoration(
-                                color: Color(0xFFC13519),
-                                borderRadius: BorderRadius.circular(7)),
-                            child: Center(
-                              child: Text(
-                                "Booked",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                    else if (currentDay == 3)
-                      for(var i=1; i<=3; i++)
-                        Container(
-                      /*margin: const EdgeInsets.all(5.0),*/
-                      padding: const EdgeInsets.all(5.0),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          color: Color(0xFFb58a0b)),
-                      //       <--- BoxDecoration here
-                      child: Row(
-                        children: <Widget>[
-                          Text(
-                            "09.00 AM - 01.00 PM   SELECT TIMESLOT",
-                            style:
-                            TextStyle(fontSize: 15.0, color: Colors.white),
-                          ),
-                          Spacer(),
-                          Icon(
-                            Icons.check_circle,
-                            color: Colors.white,
-                            size: 30,
-                          ),
                         ],
                       ),
                     )

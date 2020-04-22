@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../auth.dart';
-import '../Customer/AddPlace.dart';
-import '../Customer/TimeSlot.dart';
 
 class CustomerHomePage extends StatelessWidget {
   CustomerHomePage({this.auth, this.onSignOut});
@@ -24,6 +22,7 @@ class CustomerHomePage extends StatelessWidget {
       onWillPop: () async => false,
       child: Scaffold(
         appBar: new AppBar(
+          backgroundColor: Color(0xFF506A32),
           title: Text("Customer"),
           automaticallyImplyLeading: false,
           actions: <Widget>[
@@ -41,15 +40,8 @@ class CustomerHomePage extends StatelessWidget {
                 width: 200,
                 child: new RaisedButton(
                   textColor: Colors.white,
-                  color: Colors.blue,
-                  onPressed:  () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => new AddPlaceButton(),
-                      ),
-                    );
-                  },
+                  color: Color(0xFF506A32),
+                  onPressed: () {},
                   child: new Text("Add Place"),
                   shape: new RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
@@ -62,18 +54,8 @@ class CustomerHomePage extends StatelessWidget {
                 width: 200,
                 child: new RaisedButton(
                   textColor: Colors.white,
-                  color: Colors.blue,
-                  onPressed:  () {
-
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => new TimeSlot(),
-                      ),
-                    );
-
-
-                  },
+                  color: Color(0xFF506A32),
+                  onPressed: () {},
                   child: new Text("View Schedule"),
                   shape: new RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
@@ -86,7 +68,7 @@ class CustomerHomePage extends StatelessWidget {
                 width: 200,
                 child: new RaisedButton(
                   textColor: Colors.white,
-                  color: Colors.blue,
+                  color: Color(0xFF506A32),
                   onPressed: () {},
                   child: new Text("QR Scanner"),
                   shape: new RoundedRectangleBorder(

@@ -21,7 +21,7 @@ dependencies:
     sdk: flutter
   firebase_core: ^0.4.4+3
   firebase_auth: 0.16.0
-  cloud_firestore: ^0.12.9+5
+  cloud_firestore: ^0.13.5
   syncfusion_flutter_calendar: ^18.1.44-beta
   calendar_views: ^0.5.2
 
