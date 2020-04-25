@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import '../auth.dart';
-import '../Customer/AddPlace.dart';
-import '../Customer/TimeSlot.dart';
+import 'AddPlace.dart';
+import 'Locations.dart';
+import '../Customer/SelectSlot.dart';
 
 class ProviderHomePage extends StatelessWidget {
+
   ProviderHomePage({this.auth, this.onSignOut});
 
   final BaseAuth auth;
@@ -65,15 +67,12 @@ class ProviderHomePage extends StatelessWidget {
                   textColor: Colors.white,
                   color: Color(0xFF506A32),
                   onPressed:  () {
-
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => new TimeSlot(),
+                        builder: (context) => new Locations(),
                       ),
                     );
-
-
                   },
                   child: new Text("View Schedule"),
                   shape: new RoundedRectangleBorder(
@@ -88,7 +87,9 @@ class ProviderHomePage extends StatelessWidget {
                 child: new RaisedButton(
                   textColor: Colors.white,
                   color: Color(0xFF506A32),
-                  onPressed: () {},
+                  onPressed: () {
+
+                  },
                   child: new Text("QR Scanner"),
                   shape: new RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(

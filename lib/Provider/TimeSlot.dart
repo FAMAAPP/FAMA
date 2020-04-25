@@ -314,65 +314,70 @@ class _timeslotState extends State<TimeSlot> {
                     if (currentDay == 1)
                       for (var i = 1; i <= 5; i++)
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             setState(() {
                               slotSelected = true;
                             });
-                            },
-                          child: slotSelected? Container(
-                            /*margin: const EdgeInsets.all(5.0),*/
-                            padding: const EdgeInsets.all(5.0),
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                color: Color(0xFFb58a0b)),
-                            //       <--- BoxDecoration here
-                            child: Row(
-                              children: <Widget>[
-                                Text(
-                                  "09.00 AM - 01.00 PM   SELECT TIMESLOT",
-                                  style: TextStyle(
-                                      fontSize: 15.0, color: Colors.white),
-                                ),
-                                Spacer(),
-                                Icon(
-                                  Icons.check_circle,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                              ],
-                            ),
-                          ) : Container(
-                            //margin: const EdgeInsets.all(5.0),
-                            padding: const EdgeInsets.all(5.0),
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey)),
-                            //       <--- BoxDecoration here
-                            child: Row(
-                              children: <Widget>[
-                                Text(
-                                  "09.00 AM - 01.00 PM",
-                                  style: TextStyle(fontSize: 13.0),
-                                ),
-                                Spacer(),
-                                Container(
-                                  height: 30,
-                                  width: 80,
-                                  margin: const EdgeInsets.all(3.0),
-                                  padding: const EdgeInsets.all(3.0),
+                          },
+                          child: slotSelected
+                              ? Container(
+                                  /*margin: const EdgeInsets.all(5.0),*/
+                                  padding: const EdgeInsets.all(5.0),
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFC13519),
-                                    borderRadius: BorderRadius.circular(7),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "Booked",
-                                      style: TextStyle(color: Colors.white),
-                                    ),
+                                      border: Border.all(color: Colors.grey),
+                                      color: Color(0xFFb58a0b)),
+                                  //       <--- BoxDecoration here
+                                  child: Row(
+                                    children: <Widget>[
+                                      Text(
+                                        "09.00 AM - 01.00 PM   SELECT TIMESLOT",
+                                        style: TextStyle(
+                                            fontSize: 15.0,
+                                            color: Colors.white),
+                                      ),
+                                      Spacer(),
+                                      Icon(
+                                        Icons.check_circle,
+                                        color: Colors.white,
+                                        size: 30,
+                                      ),
+                                    ],
                                   ),
                                 )
-                              ],
-                            ),
-                          ),
+                              : Container(
+                                  //margin: const EdgeInsets.all(5.0),
+                                  padding: const EdgeInsets.all(5.0),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey)),
+                                  //       <--- BoxDecoration here
+                                  child: Row(
+                                    children: <Widget>[
+                                      Text(
+                                        "09.00 AM - 01.00 PM",
+                                        style: TextStyle(fontSize: 13.0),
+                                      ),
+                                      Spacer(),
+                                      Container(
+                                        height: 30,
+                                        width: 80,
+                                        margin: const EdgeInsets.all(3.0),
+                                        padding: const EdgeInsets.all(3.0),
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFFC13519),
+                                          borderRadius:
+                                              BorderRadius.circular(7),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            "Booked",
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
                         )
                     else if (currentDay == 2)
                       for (var i = 1; i <= 2; i++)
@@ -575,255 +580,6 @@ class _timeslotState extends State<TimeSlot> {
               ),
             )
           ],
-        ),
-      ),
-    );
-  }
-}
-
-
-
-
-
-jhgfdsrzxdcftvgybhunijkljhigfdsxdcfvgbhnjkvdsxdcfjhgfdsrzxdcftvgybhunijkljhigfdsxdcfvgbhnjkvdsxdcfjhgfdsrzxdcftvgybhunijkljhigfdsxdcfvgbhnjkvdsxdcf
-
-
-
-import 'package:flutter/material.dart';
-import '../auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:tuple/tuple.dart';
-import '../Customer/SelectSlot.dart';
-
-
-class CustomerHomePage extends StatelessWidget {
-
-  CustomerHomePage({this.auth, this.onSignOut});
-
-  final BaseAuth auth;
-  final VoidCallback onSignOut;
-
-  @override
-  Widget build(BuildContext context) {
-
-    Future<List<Tuple2<String, String>>> _viewData() async {
-      var db = Firestore.instance;
-      var notes = new List<Tuple2<String, String>>();
-
-      await db.collection("users").getDocuments().then( (value) {
-        value.documents.forEach((doc) async {
-          await db
-              .collection("users")
-              .document(doc.documentID)
-              .collection("locations")
-              .getDocuments()
-              .then((querySnapshot) {
-            querySnapshot.documents.forEach((result) {
-              notes.add(Tuple2<String, String>(
-                  result.data['name'].toString(), result.documentID));
-            });
-          });
-        });
-        print(notes);
-      });
-      return notes;
-    }
-
-    Widget createListView(BuildContext context, AsyncSnapshot snapshot) {
-      var values = snapshot.data;
-      return new ListView.builder(
-        itemCount: values.length,
-        itemBuilder: (BuildContext context, int index) {
-          return new Card(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                values[index].item1,
-                style: TextStyle(fontSize: 22.0),
-              ),
-            ),
-          );
-        },
-      );
-    }
-
-    void _signOut() async {
-      try {
-        await auth.signOut();
-        onSignOut();
-      } catch (e) {
-        print(e);
-      }
-    }
-
-    var futureBuilder = new FutureBuilder(
-      future: _viewData(),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        switch (snapshot.connectionState) {
-          case ConnectionState.none:
-          case ConnectionState.waiting:
-            return new Text('loading...');
-          default:
-            if (snapshot.hasError)
-              return new Text('Error: ${snapshot.error}');
-            else
-              return createListView(context, snapshot);
-        }
-      },
-    );
-
-    return new WillPopScope(
-      onWillPop: () async => false,
-      child: Scaffold(
-        appBar: new AppBar(
-          backgroundColor: Color(0xFF506A32),
-          title: Text("Customer"),
-          automaticallyImplyLeading: false,
-          actions: <Widget>[
-            new FlatButton(
-                onPressed: _signOut,
-                child: new Text('Logout',
-                    style: new TextStyle(fontSize: 17.0, color: Colors.white)))
-          ],
-        ),
-        body: Scaffold(
-          appBar: new AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Color(0xFF506A32),
-            title: new Text(" Select your preferred location"),
-          ),
-          body: futureBuilder,
-        ),
-      ),
-    );
-  }
-}
-
-dftgyhujhgdrftgyhuijuhgyftftgyhuouiygdrftgyihuijugytresdrftgyhujiihugfdsrdhfguyihujijhugyfdfghjigfdfghjihugyfdfghdtfghgfxgfchgvjhbkjgxg
-
-
-import 'package:flutter/material.dart';
-import '../auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:tuple/tuple.dart';
-import '../Customer/SelectSlot.dart';
-
-
-
-class CustomerHomePage extends StatelessWidget {
-
-  static Future<List<String>> ids() async {
-    List<String> ids = [];
-    await Firestore.instance
-        .collection("users")
-        .getDocuments()
-        .then((value) {
-      value.documents.forEach((element) async {
-          ids.add( element.documentID);
-      });
-    });
-    return ids;
-  }
-
-  CustomerHomePage({this.auth, this.onSignOut});
-
-  final BaseAuth auth;
-  final VoidCallback onSignOut;
-
-  @override
-  Widget build(BuildContext context) {
-
-    Future<List<Tuple2<String, String>>> _viewData() async {
-      var db = Firestore.instance;
-      var notes = new List<Tuple2<String, String>>();
-      List<String> ids = await CustomerHomePage.ids();
-
-      print(ids);
-     // print("here");
-      for (String i in ids){
-        await db
-            .collection("users")
-            .document(i)
-            .collection("locations")
-            .getDocuments()
-            .then((querySnapshot) {
-          querySnapshot.documents.forEach((result) async {
-            notes.add(Tuple2<String, String>(
-                result.data['name'].toString(), result.documentID));
-            print(Tuple2<String, String>(
-                result.data['name'].toString(), result.documentID));
-          });
-        });
-    }
-      return notes;
-    }
-
-    Widget createListView(BuildContext context, AsyncSnapshot snapshot) {
-      List<Tuple2<String, String>> values = snapshot.data;
-      return new ListView.builder(
-        itemCount: values.length,
-        itemBuilder: (BuildContext context, int index) {
-          return new Card(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                (values[index].item1 + ", branch: " + values[index].item2),
-                style: TextStyle(fontSize: 22.0),
-              ),
-            ),
-          );
-        },
-      );
-    }
-
-    void _signOut() async {
-      try {
-        await auth.signOut();
-        onSignOut();
-      } catch (e) {
-        print(e);
-      }
-    }
-
-    var futureBuilder = new FutureBuilder(
-      future: _viewData(),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        switch (snapshot.connectionState) {
-          case ConnectionState.none:
-          case ConnectionState.waiting:
-            return new Text('loading...');
-          default:
-            if (snapshot.hasError)
-              return new Text('Error: ${snapshot.error}');
-            else
-              return createListView(context, snapshot);
-        }
-      },
-    );
-
-    return new WillPopScope(
-      onWillPop: () async => false,
-      child: Scaffold(
-        appBar: new AppBar(
-          backgroundColor: Color(0xFF506A32),
-          title: Text("Customer"),
-          automaticallyImplyLeading: false,
-          actions: <Widget>[
-            new FlatButton(
-                onPressed: _signOut,
-                child: new Text('Logout',
-                    style: new TextStyle(fontSize: 17.0, color: Colors.white)))
-          ],
-        ),
-        body: Scaffold(
-          appBar: new AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Color(0xFF506A32),
-            title: new Text(" Select your preferred location"),
-          ),
-          body: futureBuilder,
         ),
       ),
     );

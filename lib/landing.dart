@@ -3,6 +3,9 @@ import './root_page.dart';
 import './auth.dart';
 
 class Landing extends StatelessWidget {
+
+  static String accountType = '';
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -21,10 +24,11 @@ class Landing extends StatelessWidget {
                 textColor: Colors.white,
                 color: Color(0xFF506A32),
                 onPressed: () {
+                  accountType = "Customer";
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => new RootPage(auth: new Auth(), loginType: "Customer",),
+                      builder: (context) => new RootPage(auth: new Auth(),),
                     ),
                   );
                 },
@@ -42,10 +46,11 @@ class Landing extends StatelessWidget {
                 textColor: Colors.white,
                 color: Color(0xFF506A32),
                 onPressed: () {
+                  accountType = "Provider";
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => new RootPage(auth: new Auth(), loginType: "Provider",),
+                      builder: (context) => new RootPage(auth: new Auth(),),
                     ),
                   );
                 },

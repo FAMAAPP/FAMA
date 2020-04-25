@@ -4,9 +4,10 @@ import 'Login.dart';
 import 'Provider/ProviderHome.dart';
 import 'Customer/CustomerHome.dart';
 import 'package:flutter/foundation.dart';
+import './landing.dart';
 
 class RootPage extends StatefulWidget {
-  RootPage({Key key, this.auth, this.loginType}) : super(key: key);
+  RootPage({Key key, this.auth}) : super(key: key);
   final BaseAuth auth;
   String loginType;
 
@@ -48,7 +49,7 @@ class _RootPageState extends State<RootPage> {
           onSignIn: () => _updateAuthStatus(AuthStatus.signedIn),
         );
       case AuthStatus.signedIn:
-        if(widget.loginType=='Provider')
+        if(Landing.accountType == 'Provider')
         return new ProviderHomePage(
             auth: widget.auth,
             onSignOut: () => _updateAuthStatus(AuthStatus.notSignedIn),);
