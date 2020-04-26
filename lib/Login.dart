@@ -3,11 +3,12 @@ import 'primary_button.dart';
 import 'auth.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key key, this.title, this.auth, this.onSignIn}) : super(key: key);
+  LoginPage({Key key, this.title, this.auth, this.onSignIn, this.type}) : super(key: key);
 
   final String title;
   final BaseAuth auth;
   final VoidCallback onSignIn;
+  final String type;
 
   @override
   _LoginPageState createState() => new _LoginPageState();
@@ -39,8 +40,11 @@ class _LoginPageState extends State<LoginPage> {
     if (validateAndSave()) {
       try {
         String userId = _formType == FormType.login
-            ? await widget.auth.signIn(_email, _password)
-            : await widget.auth.createUser(_email, _password);
+            ? await widget.auth.signIn(_email, _password, widget.type)
+            : await widget.auth.createUser(_email, _password, widget.type);
+        if(userId == "Failed"){
+          throw("User tries to login with neither Providers or customers");
+        }
         setState(() {
           _authHint = 'Signed In\n\nUser id: $userId';
         });

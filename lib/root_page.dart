@@ -4,11 +4,15 @@ import 'Login.dart';
 import 'Provider/ProviderHome.dart';
 import 'Customer/CustomerHome.dart';
 import 'package:flutter/foundation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+final providersDatabaseReference = Firestore.instance.collection("Providers");
+final customersDatabaseReference = Firestore.instance.collection("Customers");
 
 class RootPage extends StatefulWidget {
   RootPage({Key key, this.auth, this.loginType}) : super(key: key);
   final BaseAuth auth;
-  String loginType;
+  final String loginType;
 
   @override
   State<StatefulWidget> createState() => new _RootPageState();
@@ -44,11 +48,13 @@ class _RootPageState extends State<RootPage> {
       case AuthStatus.notSignedIn:
         return new LoginPage(
           title: '',
+          type: widget.loginType,
           auth: widget.auth,
           onSignIn: () => _updateAuthStatus(AuthStatus.signedIn),
         );
       case AuthStatus.signedIn:
-        if(widget.loginType=='Provider')
+//        providersDatabaseReference.getDocuments(
+        if(widget.auth.userType() =='Providers')
         return new ProviderHomePage(
             auth: widget.auth,
             onSignOut: () => _updateAuthStatus(AuthStatus.notSignedIn),);

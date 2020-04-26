@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import './root_page.dart';
-import './auth.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import './landing.dart';
 
-void main() => runApp(new MyApp());
-
+Future<void> main() async {
+  await DotEnv().load('.env');
+  runApp(new MyApp());
+}
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override

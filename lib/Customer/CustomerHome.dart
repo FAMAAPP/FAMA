@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../auth.dart';
-import '../Customer/AddPlace.dart';
 import '../Customer/TimeSlot.dart';
 
 class CustomerHomePage extends StatelessWidget {
@@ -46,7 +45,7 @@ class CustomerHomePage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => new AddPlaceButton(),
+                        builder: (context) => TimeSlot(),
                       ),
                     );
                   },

@@ -1,9 +1,6 @@
-import 'dart:typed_data';
-
-import 'package:famaapp/Provider/QRtoData.dart';
+import 'package:fama/Provider/QRtoData.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qrscan/qrscan.dart';
 
 class QRScanner extends StatelessWidget {
 

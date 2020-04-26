@@ -23,7 +23,7 @@ class Landing extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => new RootPage(auth: new Auth(), loginType: "Customer",),
+                      builder: (context) => new RootPage(auth: new Auth(), loginType: "Customers",),
                     ),
                   );
                 },
@@ -44,7 +44,7 @@ class Landing extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => new RootPage(auth: new Auth(), loginType: "Provider",),
+                      builder: (context) => new RootPage(auth: new Auth(), loginType: "Providers",),
                     ),
                   );
                 },
