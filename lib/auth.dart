@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'package:fama/landing.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final providersDatabaseReference = Firestore.instance.collection("Providers");
 final customersDatabaseReference = Firestore.instance.collection("Customers");
+
 
 abstract class BaseAuth {
 

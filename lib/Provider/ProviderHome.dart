@@ -1,14 +1,14 @@
 import 'package:fama/Provider/AddStore.dart';
 import 'package:fama/Provider/BLoC/Store_bloc.dart';
 import 'package:fama/Provider/QRtoData.dart';
-import 'package:fama/Customer/QRGenerator.dart';
 import 'package:flutter/material.dart';
 import '../auth.dart';
 import 'package:fama/Provider/QRScanner.dart';
 import 'package:provider/provider.dart';
-
+import 'Locations.dart';
 
 class ProviderHomePage extends StatelessWidget {
+
   ProviderHomePage({this.auth, this.onSignOut});
 
   final BaseAuth auth;
@@ -29,6 +29,7 @@ class ProviderHomePage extends StatelessWidget {
       onWillPop: () async => false,
       child: Scaffold(
         appBar: new AppBar(
+          backgroundColor: Color(0xFF506A32),
           title: Text("Provider"),
           automaticallyImplyLeading: false,
           actions: <Widget>[
@@ -46,7 +47,7 @@ class ProviderHomePage extends StatelessWidget {
                 width: 200,
                 child: new RaisedButton(
                   textColor: Colors.white,
-                  color: Colors.blue,
+                  color: Color(0xFF506A32),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -69,13 +70,15 @@ class ProviderHomePage extends StatelessWidget {
                 width: 200,
                 child: new RaisedButton(
                   textColor: Colors.white,
-                  color: Colors.blue,
-                  onPressed: () {
+                  color: Color(0xFF506A32),
+                  onPressed:  () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => QRGenerator(),
-                        )
-                    );},
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => new Locations(),
+                      ),
+                    );
+                  },
                   child: new Text("View Schedule"),
                   shape: new RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
@@ -88,7 +91,7 @@ class ProviderHomePage extends StatelessWidget {
                 width: 200,
                 child: new RaisedButton(
                   textColor: Colors.white,
-                  color: Colors.blue,
+                  color: Color(0xFF506A32),
                   onPressed: () {
                     Navigator.push(
                       context,

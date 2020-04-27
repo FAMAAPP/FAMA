@@ -9,6 +9,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 final providersDatabaseReference = Firestore.instance.collection("Providers");
 final customersDatabaseReference = Firestore.instance.collection("Customers");
 
+
 class RootPage extends StatefulWidget {
   RootPage({Key key, this.auth, this.loginType}) : super(key: key);
   final BaseAuth auth;
@@ -53,9 +54,8 @@ class _RootPageState extends State<RootPage> {
           onSignIn: () => _updateAuthStatus(AuthStatus.signedIn),
         );
       case AuthStatus.signedIn:
-//        providersDatabaseReference.getDocuments(
         if(widget.auth.userType() =='Providers')
-        return new ProviderHomePage(
+          return new ProviderHomePage(
             auth: widget.auth,
             onSignOut: () => _updateAuthStatus(AuthStatus.notSignedIn),);
         else

@@ -3,12 +3,16 @@ import './root_page.dart';
 import './auth.dart';
 
 class Landing extends StatelessWidget {
+
+  static String accountType = '';
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: Text("Login as"),
         actions: <Widget>[],
+        backgroundColor: Color(0xFF506A32),
       ),
       body: new Center(
         child: Column(
@@ -18,8 +22,9 @@ class Landing extends StatelessWidget {
               width: 200,
               child: new RaisedButton(
                 textColor: Colors.white,
-                color: Colors.blue,
+                color: Color(0xFF506A32),
                 onPressed: () {
+                  accountType = "Customer";
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -39,8 +44,9 @@ class Landing extends StatelessWidget {
               width: 200,
               child: new RaisedButton(
                 textColor: Colors.white,
-                color: Colors.blue,
+                color: Color(0xFF506A32),
                 onPressed: () {
+                  accountType = "Provider";
                   Navigator.push(
                     context,
                     MaterialPageRoute(

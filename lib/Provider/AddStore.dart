@@ -16,6 +16,7 @@ class AddStore extends StatelessWidget {
     final bloc = Provider.of<StoreBLoC>(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFF506A32),
         title: Text(
           "Add Store Form",
           style: TextStyle(
