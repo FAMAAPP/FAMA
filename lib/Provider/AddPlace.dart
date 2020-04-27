@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../primary_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AddPlaceButton extends StatefulWidget {
   @override
@@ -17,12 +18,11 @@ class _AddPlaceButton extends State<AddPlaceButton> {
     data =
     {
       "name" : nameController.text,
-        "slots":
+        "slots" :
         [
           {
-
-            "day": "Sun",
-            "timeslots":
+            "day" : "Sun",
+            "timeslots" :
             [
               {
                 "count": 5,
@@ -30,210 +30,245 @@ class _AddPlaceButton extends State<AddPlaceButton> {
                 "end": "7 AM"
               },
               {
+                "count": 5,
                 "start": "7 AM",
                 "end": "8 AM"
               },
               {
+                "count": 5,
                 "start": "8 AM",
                 "end": "9 AM"
               },
               {
+                "count": 5,
                 "start": "9 AM",
                 "end": "10 AM"
               },
               {
+                "count": 5,
                 "start": "10 AM",
                 "end": "11 AM"
               },
               {
+                "count": 5,
                 "start": "11 AM",
-                "end": "12 PM"
+                "end": "12 PM "
               },
             ]
           },
           {
-            "count": 5,
-            "day": "Mon",
-            "timeslots":
+            "day" : "Mon",
+            "timeslots" :
             [
               {
+                "count": 5,
                 "start": "6 AM",
                 "end": "7 AM"
               },
               {
+                "count": 5,
                 "start": "7 AM",
                 "end": "8 AM"
               },
               {
+                "count": 5,
                 "start": "8 AM",
                 "end": "9 AM"
               },
               {
+                "count": 5,
                 "start": "9 AM",
                 "end": "10 AM"
               },
               {
+                "count": 5,
                 "start": "10 AM",
                 "end": "11 AM"
               },
               {
+                "count": 5,
                 "start": "11 AM",
-                "end": "12 PM"
+                "end": "12 PM "
               },
             ]
           },
           {
-            "count": 5,
-            "day": "Tues",
-            "timeslots":
+            "day" : "Tues",
+            "timeslots" :
             [
               {
+                "count": 5,
                 "start": "6 AM",
                 "end": "7 AM"
               },
               {
+                "count": 5,
                 "start": "7 AM",
                 "end": "8 AM"
               },
               {
+                "count": 5,
                 "start": "8 AM",
                 "end": "9 AM"
               },
               {
+                "count": 5,
                 "start": "9 AM",
                 "end": "10 AM"
               },
               {
+                "count": 5,
                 "start": "10 AM",
                 "end": "11 AM"
               },
               {
+                "count": 5,
                 "start": "11 AM",
-                "end": "12 PM"
+                "end": "12 PM "
               },
             ]
           },
           {
-            "count": 5,
-            "day": "Wed",
-            "timeslots":
+            "day" : "Wed",
+            "timeslots" :
             [
               {
+                "count": 5,
                 "start": "6 AM",
                 "end": "7 AM"
               },
               {
+                "count": 5,
                 "start": "7 AM",
                 "end": "8 AM"
               },
               {
+                "count": 5,
                 "start": "8 AM",
                 "end": "9 AM"
               },
               {
+                "count": 5,
                 "start": "9 AM",
                 "end": "10 AM"
               },
               {
+                "count": 5,
                 "start": "10 AM",
                 "end": "11 AM"
               },
               {
+                "count": 5,
                 "start": "11 AM",
-                "end": "12 PM"
+                "end": "12 PM "
               },
             ]
           },
           {
-            "count": 5,
-            "day": "Thu",
-            "timeslots":
+            "day" : "Thu",
+            "timeslots" :
             [
               {
+                "count": 5,
                 "start": "6 AM",
                 "end": "7 AM"
               },
               {
+                "count": 5,
                 "start": "7 AM",
                 "end": "8 AM"
               },
               {
+                "count": 5,
                 "start": "8 AM",
                 "end": "9 AM"
               },
               {
+                "count": 5,
                 "start": "9 AM",
                 "end": "10 AM"
               },
               {
+                "count": 5,
                 "start": "10 AM",
                 "end": "11 AM"
               },
               {
+                "count": 5,
                 "start": "11 AM",
-                "end": "12 PM"
+                "end": "12 PM "
               },
             ]
           },
           {
-            "count": 5,
-            "day": "Fri",
-            "timeslots":
+            "day" : "Fri",
+            "timeslots" :
             [
               {
+                "count": 5,
                 "start": "6 AM",
                 "end": "7 AM"
               },
               {
+                "count": 5,
                 "start": "7 AM",
                 "end": "8 AM"
               },
               {
+                "count": 5,
                 "start": "8 AM",
                 "end": "9 AM"
               },
               {
+                "count": 5,
                 "start": "9 AM",
                 "end": "10 AM"
               },
               {
+                "count": 5,
                 "start": "10 AM",
                 "end": "11 AM"
               },
               {
+                "count": 5,
                 "start": "11 AM",
-                "end": "12 PM"
+                "end": "12 PM "
               },
             ]
           },
           {
-            "count": 5,
-            "day": "Sat",
-            "timeslots":
+            "day" : "Sat",
+            "timeslots" :
             [
               {
+                "count": 5,
                 "start": "6 AM",
                 "end": "7 AM"
               },
               {
+                "count": 5,
                 "start": "7 AM",
                 "end": "8 AM"
               },
               {
+                "count": 5,
                 "start": "8 AM",
                 "end": "9 AM"
               },
               {
+                "count": 5,
                 "start": "9 AM",
                 "end": "10 AM"
               },
               {
+                "count": 5,
                 "start": "10 AM",
                 "end": "11 AM"
               },
               {
+                "count": 5,
                 "start": "11 AM",
-                "end": "12 PM"
+                "end": "12 PM "
               },
             ]
           },
@@ -256,7 +291,7 @@ class _AddPlaceButton extends State<AddPlaceButton> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Add Place'),
+          title: Text('Add Place', style: GoogleFonts.libreBaskerville()),
           backgroundColor: Color(0xFF506A32),
         ),
         body: Center(
@@ -288,12 +323,20 @@ class _AddPlaceButton extends State<AddPlaceButton> {
               Container(
                 margin: EdgeInsets.all(10),
               ),
-              PrimaryButton(
-                  key: new Key('Add'),
-                  text: 'Add',
-                  height: 44.0,
+              SizedBox(
+                width: 200,
+                child: new RaisedButton(
+                  textColor: Colors.white,
+                  color: Color(0xFF506A32),
                   onPressed: addData,
+                  child: new Text("Add", style: GoogleFonts.libreBaskerville()),
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(44 / 2),
+                    ),
                   ),
+                ),
+              ),
             ],
           ),
         ),

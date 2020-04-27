@@ -3,6 +3,7 @@ import '../auth.dart';
 import 'AddPlace.dart';
 import 'Locations.dart';
 import '../Customer/SelectSlot.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProviderHomePage extends StatelessWidget {
 
@@ -33,7 +34,7 @@ class ProviderHomePage extends StatelessWidget {
             new FlatButton(
                 onPressed: _signOut,
                 child: new Text('Logout',
-                    style: new TextStyle(fontSize: 17.0, color: Colors.white)))
+                    style: GoogleFonts.libreBaskerville(fontSize: 17.0, color: Colors.white)))
           ],
         ),
         body: new Center(
@@ -53,7 +54,7 @@ class ProviderHomePage extends StatelessWidget {
                       ),
                     );
                   },
-                  child: new Text("Add Place"),
+                  child: new Text("Add Place", style: GoogleFonts.libreBaskerville()),
                   shape: new RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(44 / 2),
@@ -74,7 +75,7 @@ class ProviderHomePage extends StatelessWidget {
                       ),
                     );
                   },
-                  child: new Text("View Schedule"),
+                  child: new Text("View Schedule", style: GoogleFonts.libreBaskerville()),
                   shape: new RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(44 / 2),
@@ -90,7 +91,7 @@ class ProviderHomePage extends StatelessWidget {
                   onPressed: () {
 
                   },
-                  child: new Text("QR Scanner"),
+                  child: new Text("QR Scanner", style: GoogleFonts.libreBaskerville()),
                   shape: new RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(44 / 2),

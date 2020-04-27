@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './root_page.dart';
 import './auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Landing extends StatelessWidget {
 
@@ -10,7 +11,7 @@ class Landing extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: Text("Login as"),
+        title: Text("Login as", style: GoogleFonts.libreBaskerville(),),
         actions: <Widget>[],
         backgroundColor: Color(0xFF506A32),
       ),
@@ -32,7 +33,7 @@ class Landing extends StatelessWidget {
                     ),
                   );
                 },
-                child: new Text("Customer"),
+                child: new Text("Customer", style: GoogleFonts.libreBaskerville()),
                 shape: new RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(44 / 2),
@@ -54,7 +55,7 @@ class Landing extends StatelessWidget {
                     ),
                   );
                 },
-                child: new Text("Provider"),
+                child: new Text("Provider", style: GoogleFonts.libreBaskerville()),
                 shape: new RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(44 / 2),

@@ -2,6 +2,7 @@ import 'package:fama/Provider/TimeSlot.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Locations extends StatelessWidget {
 
@@ -34,13 +35,13 @@ class Locations extends StatelessWidget {
               contentPadding:
               EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               leading: Icon(Icons.store_mall_directory),
-              title: Text(values[index]),
+              title: Text(values[index], style: GoogleFonts.libreBaskerville()),
               trailing: Icon(Icons.arrow_forward),
               onTap: (){
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => new TimeSlot(),
+                    builder: (context) => new TimeSlot(values[index]),
                   ),
                 );
               },
@@ -72,7 +73,7 @@ class Locations extends StatelessWidget {
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: Color(0xFF506A32),
-        title: new Text("Choose a branch"),
+        title: new Text("Choose a branch", style: GoogleFonts.libreBaskerville()),
       ),
       body: futureBuilder,
     );

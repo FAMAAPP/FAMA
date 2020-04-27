@@ -41,19 +41,23 @@ class _RootPageState extends State<RootPage> {
 
   @override
   Widget build(BuildContext context) {
+
     switch (authStatus) {
+
       case AuthStatus.notSignedIn:
         return new LoginPage(
           title: '',
           auth: widget.auth,
           onSignIn: () => _updateAuthStatus(AuthStatus.signedIn),
         );
+
       case AuthStatus.signedIn:
         if(Landing.accountType == 'Provider')
         return new ProviderHomePage(
             auth: widget.auth,
             onSignOut: () => _updateAuthStatus(AuthStatus.notSignedIn),);
-        else
+
+        if(Landing.accountType == 'Customer' && widget.auth.currentUser() != null )
           return new CustomerHomePage(
             auth: widget.auth,
             onSignOut: () => _updateAuthStatus(AuthStatus.notSignedIn),);
