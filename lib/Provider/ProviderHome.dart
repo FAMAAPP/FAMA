@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../auth.dart';
 import 'package:fama/Provider/QRScanner.dart';
 import 'package:provider/provider.dart';
-import 'Locations.dart';
+import '../Shared/Locations.dart';
 
 class ProviderHomePage extends StatelessWidget {
 
@@ -75,7 +75,7 @@ class ProviderHomePage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => new Locations(),
+                        builder: (context) => new Locations(auth: this.auth),
                       ),
                     );
                   },

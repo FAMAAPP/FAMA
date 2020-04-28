@@ -82,7 +82,20 @@ class StoreBLoC {
 
   submitStoreInfo(String id) async {
     DocumentReference storeRef = await storesDatabaseReference.document();
-
+    var sched = List();
+    for(var i = 0; i < 7; ++i) {
+        sched.add({
+          "day": "",
+          "9:00 AM to 10:00 AM": [],
+          "10:00 AM to 11:00 AM": [],
+          "11:00 AM to 12:00 PM": [],
+          "12:00 PM to 1:00 PM": [],
+          "1:00 PM to 2:00 PM": [],
+          "2:00 PM to 3:00 PM": [],
+          "3:00 PM to 4:00 PM": [],
+          "3:00 PM to 4:00 PM": [],
+        });
+    }
     await storeRef.setData({
       "storeName": _storeName.value,
       "storeAddress": _storeAddress.value,
@@ -90,21 +103,11 @@ class StoreBLoC {
       "storeCountry": _storeCountry.value,
       "storeZipcode": _storeZipCode.value,
       "storePhoneNumber": _storePhoneNumber.value,
-      "availableSchedule": {
-        "9:00 AM to 10:00 AM": [],
-        "10:00 AM to 11:00 AM": [],
-        "11:00 AM to 12:00 PM": [],
-        "12:00 PM to 1:00 PM": [],
-        "1:00 PM to 2:00 PM": [],
-        "2:00 PM to 3:00 PM": [],
-        "3:00 PM to 4:00 PM": [],
-        "3:00 PM to 4:00 PM": [],
-      },
+      "storeCapacityPerSlot": 5,
+      "availableSchedule": sched,
     });
-
     await providersDatabaseReference.document(id).updateData({"stores": FieldValue.arrayUnion([storeRef])});
     print("Store Added to Provider's list");
-
   }
 }
 

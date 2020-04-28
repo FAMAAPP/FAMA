@@ -5,29 +5,18 @@
 //MaterialPageRoute(builder: (context) => QRGenerator(),
 //)
 //);},
+//            title: new Text(" Select your preferred location"),
 
+
+import 'package:fama/Customer/QRGenerator.dart';
+import 'package:fama/Provider/AddStore.dart';
+import 'package:fama/Provider/BLoC/Store_bloc.dart';
 import 'package:flutter/material.dart';
 import '../auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:tuple/tuple.dart';
-import '../Customer/SelectSlot.dart';
-
-
+import 'package:provider/provider.dart';
+import '../Shared/Locations.dart';
 
 class CustomerHomePage extends StatelessWidget {
-
-  static Future<List<String>> _ids() async {
-    List<String> ids = [];
-    await Firestore.instance
-        .collection("users")
-        .getDocuments()
-        .then((value) {
-      value.documents.forEach((element) async {
-          ids.add( element.documentID);
-      });
-    });
-    return ids;
-  }
 
   CustomerHomePage({this.auth, this.onSignOut});
 
@@ -36,62 +25,6 @@ class CustomerHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    Future<List<Tuple2<String, String>>> _viewData() async {
-      var db = Firestore.instance;
-      var notes = new List<Tuple2<String, String>>();
-      List<String> ids = await CustomerHomePage._ids();
-
-      print(ids);
-     // print("here");
-      for (String i in ids){
-        await db
-            .collection("users")
-            .document(i)
-            .collection("locations")
-            .getDocuments()
-            .then((querySnapshot) {
-          querySnapshot.documents.forEach((result) async {
-            notes.add(Tuple2<String, String>(
-                result.data['name'].toString(), result.documentID));
-            print(Tuple2<String, String>(
-                result.data['name'].toString(), result.documentID));
-          });
-        });
-    }
-      return notes;
-    }
-
-    Widget createListView(BuildContext context, AsyncSnapshot snapshot) {
-      List<Tuple2<String, String>> values = snapshot.data;
-      return new ListView.builder(
-        itemCount: values.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            elevation: 8.0,
-            margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-            child: Container(
-              child: ListTile(
-                contentPadding:
-                EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                leading: Icon(Icons.store_mall_directory),
-                title: Text(values[index].item1 + ', branch: ' + values[index].item2),
-                trailing: Icon(Icons.arrow_forward),
-                onTap: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => new SelectSlot(),
-                    ),
-                  );
-                },
-              ),
-            ),
-          );
-        },
-      );
-    }
-
     void _signOut() async {
       try {
         await auth.signOut();
@@ -100,22 +33,6 @@ class CustomerHomePage extends StatelessWidget {
         print(e);
       }
     }
-
-    var futureBuilder = new FutureBuilder(
-      future: _viewData(),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        switch (snapshot.connectionState) {
-          case ConnectionState.none:
-          case ConnectionState.waiting:
-            return new Text('loading...');
-          default:
-            if (snapshot.hasError)
-              return new Text('Error: ${snapshot.error}');
-            else
-              return createListView(context, snapshot);
-        }
-      },
-    );
 
     return new WillPopScope(
       onWillPop: () async => false,
@@ -131,13 +48,54 @@ class CustomerHomePage extends StatelessWidget {
                     style: new TextStyle(fontSize: 17.0, color: Colors.white)))
           ],
         ),
-        body: Scaffold(
-          appBar: new AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Color(0xFF506A32),
-            title: new Text(" Select your preferred location"),
+        body: new Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              SizedBox(
+                width: 200,
+                child: new RaisedButton(
+                  textColor: Colors.white,
+                  color: Color(0xFF506A32),
+                  onPressed:  () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => new Locations(auth: this.auth),
+                      ),
+                    );
+                  },
+                  child: new Text("Book a Timeslot"),
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(44 / 2),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 200,
+                child: new RaisedButton(
+                  textColor: Colors.white,
+                  color: Color(0xFF506A32),
+                  onPressed:  () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => QRGenerator()//new Locations(auth: this.auth),
+                      ),
+                    );
+                    },
+                  child: new Text("View Reservation"),
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(44 / 2),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-          body: futureBuilder,
         ),
       ),
     );

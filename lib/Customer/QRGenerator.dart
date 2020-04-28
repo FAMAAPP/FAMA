@@ -8,6 +8,7 @@ class QRGenerator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFF506A32),
         title: Text("Your Ticket"),
         centerTitle: true,
       ),
@@ -20,14 +21,15 @@ class QRGenerator extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text("Please Show this to the store employee"),
-                    Text("Time: Blah Blah"),
-                    Text("Date: bababbaba"),
-
+                    Text("Store: Danube"),
+                    Text("Address: Hayat Mall"),
+                    Text("Time: 9:00 AM to 10:00 PM"),
+                    Text("Date: April 16, 2020"),
                   ],
                 ),
             ),
             QrImage(
-              data: "",
+              data: "Reservation verified!\n\nTime 9:00 AM to 10:00 PM\nDate: April 16, 2020",
               version: QrVersions.auto,
               size: 320,
               gapless: false,
