@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../primary_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:location/location.dart';
 
 class AddPlaceButton extends StatefulWidget {
   @override
@@ -15,9 +15,12 @@ class _AddPlaceButton extends State<AddPlaceButton> {
   Map<String, Object> data;
 
   void addData() async{
+    final currentLocation = await Location().getLocation();
+    final point = GeoPoint(currentLocation.latitude, currentLocation.longitude);
     data =
     {
       "name" : nameController.text,
+      "branchLocation" : point,
         "slots" :
         [
           {

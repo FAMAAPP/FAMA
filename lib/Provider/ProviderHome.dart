@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import '../auth.dart';
 import 'AddPlace.dart';
 import 'Locations.dart';
-import '../Customer/SelectSlot.dart';
+import './QRScanner.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:fama/Provider/QRtoData.dart';
+import 'package:provider/provider.dart';
 
 class ProviderHomePage extends StatelessWidget {
 
@@ -28,7 +30,7 @@ class ProviderHomePage extends StatelessWidget {
       child: Scaffold(
         appBar: new AppBar(
           backgroundColor: Color(0xFF506A32),
-          title: Text("Provider"),
+          title: Text("Provider",  style: GoogleFonts.libreBaskerville()),
           automaticallyImplyLeading: false,
           actions: <Widget>[
             new FlatButton(
@@ -54,7 +56,7 @@ class ProviderHomePage extends StatelessWidget {
                       ),
                     );
                   },
-                  child: new Text("Add Place", style: GoogleFonts.libreBaskerville()),
+                  child: new Text("Add Branch", style: GoogleFonts.libreBaskerville()),
                   shape: new RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(44 / 2),
@@ -89,7 +91,14 @@ class ProviderHomePage extends StatelessWidget {
                   textColor: Colors.white,
                   color: Color(0xFF506A32),
                   onPressed: () {
-
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ChangeNotifierProvider<QRtoData>(
+                          create: (context) => QRtoData(),
+                          child: QRScanner(),
+                        ),
+                        )
+                    );
                   },
                   child: new Text("QR Scanner", style: GoogleFonts.libreBaskerville()),
                   shape: new RoundedRectangleBorder(
