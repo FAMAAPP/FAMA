@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import './auth.dart';
-import 'Provider/ProviderLogin.dart';
+import 'Login.dart';
 import 'Provider/ProviderHome.dart';
 import 'Customer/CustomerHome.dart';
-import 'Provider/ProviderLogin.dart';
-import 'Customer/CustomerLogin.dart';
+import 'package:flutter/foundation.dart';
+import './landing.dart';
 
 class RootPage extends StatefulWidget {
-  RootPage({Key key, this.auth, @required this.loginType}) : super(key: key);
+  RootPage({Key key, this.auth}) : super(key: key);
   final BaseAuth auth;
   String loginType;
 
@@ -41,27 +41,23 @@ class _RootPageState extends State<RootPage> {
 
   @override
   Widget build(BuildContext context) {
+
     switch (authStatus) {
+
       case AuthStatus.notSignedIn:
-        if(widget.loginType=='Provider')
-          return new ProviderLoginPage(
-            title: '',
-            auth: widget.auth,
-            onSignIn: () => _updateAuthStatus(AuthStatus.signedIn),
-          );
-        else
-          return new CustomerLoginPage(
-            title: '',
-            auth: widget.auth,
-            onSignIn: () => _updateAuthStatus(AuthStatus.signedIn),
-          );
-        break;
+        return new LoginPage(
+          title: '',
+          auth: widget.auth,
+          onSignIn: () => _updateAuthStatus(AuthStatus.signedIn),
+        );
+
       case AuthStatus.signedIn:
-        if(widget.loginType=='Provider')
-        return new ProviderHomePage(
+        if(Landing.accountType == 'Provider')
+          return new ProviderHomePage(
             auth: widget.auth,
             onSignOut: () => _updateAuthStatus(AuthStatus.notSignedIn),);
-        else
+
+        if(Landing.accountType == 'Customer' && widget.auth.currentUser() != null )
           return new CustomerHomePage(
             auth: widget.auth,
             onSignOut: () => _updateAuthStatus(AuthStatus.notSignedIn),);
